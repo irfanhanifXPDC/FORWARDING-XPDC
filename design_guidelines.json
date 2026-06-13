@@ -1,0 +1,145 @@
+{
+  "project_name": "XPDC Group - Cinematic Landing Page",
+  "domain": "Logistics & Freight Forwarding",
+  "brand_name": "XPDC Group (PT Xentra Platform Digital Cargo)",
+  "contact_info": {
+    "address": "Commercial Park ACP2 No. UG 16, RT.002/RW.007, Neglasari, Kec. Neglasari, Kota Tangerang, Banten 15129",
+    "email": "halo@forwarding.xpdc.co.id"
+  },
+  "design_system": {
+    "theme_mode": "dark",
+    "toggle_supported": true,
+    "archetype": "Archetype 4 (Swiss & High-Contrast) + Industrial Luxury",
+    "fonts": {
+      "heading": "Clash Display, sans-serif",
+      "body": "Satoshi, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "colors": {
+      "dark": {
+        "background": "#07090F",
+        "surface": "#121621",
+        "surface_glass": "rgba(18, 22, 33, 0.6)",
+        "primary": "#FF4D00",
+        "primary_hover": "#FF6A2B",
+        "text_primary": "#FFFFFF",
+        "text_secondary": "#8A94A6",
+        "border": "#21283B",
+        "success": "#00E676",
+        "error": "#FF1744"
+      },
+      "light": {
+        "background": "#F4F6F8",
+        "surface": "#FFFFFF",
+        "surface_glass": "rgba(255, 255, 255, 0.7)",
+        "primary": "#FF4D00",
+        "primary_hover": "#E64500",
+        "text_primary": "#07090F",
+        "text_secondary": "#5C667A",
+        "border": "#D1D5DB",
+        "success": "#00C853",
+        "error": "#D50000"
+      }
+    },
+    "layout": {
+      "container": "w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24",
+      "section_spacing": "py-24 md:py-32 lg:py-48",
+      "border_radius": "rounded-none",
+      "grid_pattern": "Bento Grid (Mode A: Tetris) for Services, Swiss Grid for About"
+    }
+  },
+  "motion_and_3d": {
+    "preloader": "Cinematic counter 0-100% using JetBrains Mono, placed dead center. Text color #FF4D00. Screen splits horizontally or fades elegantly to reveal the 3D scene (Sougen.co style).",
+    "scroll_engine": "Lenis for buttery smooth scrolling.",
+    "three_js_scene": "A global fixed <Canvas> using React Three Fiber. Use <Environment preset='dawn' />. The scene acts as a dynamic background behind HTML content.",
+    "cargo_ship_3d": "Low-poly but premium shaded Cargo Ship model. Floats with subtle sine wave movement. Y-axis rotation tied to scroll progress. Visible during Hero and LCL/FCL sections.",
+    "cargo_plane_3d": "Low-poly Cargo Plane. Moves horizontally across the background when the Air Freight section comes into view.",
+    "ui_animations": "Framer Motion for text reveals (staggered letters/words), parallax image containers, and bento grid item entrances."
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "layout": "100vh flex flex-col justify-center items-start relative z-10",
+      "content": "Massive typography: 'GLOBAL FREIGHT. BEYOND BORDERS.' Subtitle describing Air, LCL, FCL. Primary CTA: 'Track Shipment' or 'Explore Services'.",
+      "visuals": "3D Cargo Ship dominates the background canvas.",
+      "styles": "Heading text-5xl md:text-6xl+ uppercase tracking-tighter. Mixed font weights (Light & Black)."
+    },
+    {
+      "id": "about",
+      "layout": "Grid-cols-1 md:grid-cols-12 gap-8 py-32 relative z-10",
+      "content": "About XPDC Group (PT Xentra Platform Digital Cargo). Text-focused storytelling.",
+      "visuals": "Deep typographic contrast. Large numbers tracking years of experience or volume.",
+      "styles": "Col-span-full md:col-span-8 for main text. Glassmorphic data cards on the side."
+    },
+    {
+      "id": "services",
+      "layout": "Tetris Bento Grid (grid-cols-1 md:grid-cols-12 gap-8)",
+      "content": "Cards for Air Freight, FCL, and LCL. Each card MUST have a 'Get Inquiry' button that opens a quote modal.",
+      "visuals": "Hover states on cards trigger lighting changes. 3D Plane enters background when Air Freight is hovered or in view.",
+      "styles": "Borders 1px solid border/40. Backdrop blur if overlapping 3D. Generous p-8 or p-12 inside cards.",
+      "test_ids": ["air-freight-inquiry-btn", "fcl-inquiry-btn", "lcl-inquiry-btn"]
+    },
+    {
+      "id": "why_choose_us",
+      "layout": "Control Room Grid (grid-cols-1 md:grid-cols-3 gap-6)",
+      "content": "Stats, reliability, global network.",
+      "visuals": "Animated counters using framer-motion.",
+      "styles": "Monochrome technical look with primary color accents."
+    },
+    {
+      "id": "process",
+      "layout": "Vertical timeline aligned left.",
+      "content": "Step-by-step shipping process.",
+      "visuals": "A vertical line that 'fills' with the primary color as the user scrolls down (Framer Motion useScroll).",
+      "styles": "Heavy use of negative space on the right side."
+    },
+    {
+      "id": "testimonials",
+      "layout": "Horizontal marquee or slider.",
+      "content": "Client reviews.",
+      "visuals": "React-fast-marquee with low contrast, glassmorphic cards.",
+      "styles": "Large quotes in Clash Display."
+    },
+    {
+      "id": "tracking",
+      "layout": "Centered container, max-w-2xl.",
+      "content": "Input field for AWB/Tracking number. Mock functionality.",
+      "visuals": "Floating label input, high contrast button.",
+      "styles": "Input field should have a subtle inner glow on focus."
+    },
+    {
+      "id": "contact_footer",
+      "layout": "Massive padding py-32. Grid cols-1 md:grid-cols-2.",
+      "content": "Address, Email, Social links. Multi-language toggle (ID/EN) placed here or in header.",
+      "visuals": "Massive 'LET\\'S TALK' text filling the width.",
+      "styles": "Darkest background. Crisp white/gray text."
+    }
+  ],
+  "components": {
+    "header": {
+      "type": "Fixed glassmorphic header (z-50).",
+      "elements": "Logo (XPDC), Nav links, Theme Toggle, Language Switcher (ID/EN), 'Get Quote' CTA."
+    },
+    "inquiry_modal": {
+      "type": "Shadcn Dialog",
+      "behavior": "Opens when 'Get Inquiry' is clicked. Contains a Form (Name, Email, Cargo Details, Weight/Volume).",
+      "submit_state": "Must show a loading spinner/state during submission. On success, close modal and show Sonner Toast. On error, show error Toast.",
+      "test_ids": ["inquiry-form-modal", "inquiry-submit-btn", "inquiry-cargo-type-select"]
+    }
+  },
+  "media": {
+    "images": {
+      "cargo_ship_fallback": "https://images.unsplash.com/photo-1568347877321-f8935c7dc5a3?q=85",
+      "cargo_plane_fallback": "https://images.unsplash.com/photo-1776457631633-de21baef94b6?q=85",
+      "warehouse_bg": "https://images.unsplash.com/photo-1553413077-190dd305871c?q=85"
+    }
+  },
+  "instructions_to_main_agent": [
+    "INSTALLATION: You must install 'lenis' (for smooth scroll), 'framer-motion', 'three', '@react-three/fiber', '@react-three/drei', 'lucide-react', 'sonner', and Shadcn UI components (dialog, form, input, select, button).",
+    "3D IMPLEMENTATION: Build a continuous <Canvas> in the background. Use <Suspense> and Drei's <useGLTF> for the ship/plane. If you do not have external GLTF models, build highly stylized geometric placeholders (e.g., elongated blocks for ships) using standard meshes, but make them look premium with <MeshStandardMaterial> and lighting.",
+    "SCROLL BINDING: Use Framer Motion's useScroll() to extract scrollYProgress, and tie it to the rotation and position of the 3D objects in the canvas.",
+    "FORM & TOASTS: Use 'sonner' for toast notifications. The Inquiry Form must mock an async API call (setTimeout for 2 seconds) to demonstrate the loading state, then trigger a success toast.",
+    "STYLING: Strictly enforce the 'Clash Display' and 'Satoshi' fonts. Add them via Google Fonts or next/font (if Next.js, but this is pure React/Vite so use Google Fonts CDN in index.html). Do NOT use Inter. Enforce the #FF4D00 primary color. Ensure dark mode and light mode are fully implemented using Tailwind's 'dark:' variant class.",
+    "TEST IDS: You MUST include the exact data-testids specified in this JSON for testing purposes."
+  ]
+}

@@ -97,7 +97,7 @@ export default function Services({ onOpenInquiry }) {
                 whileInView="show"
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ delay: i * 0.1 }}
-                className={`relative overflow-hidden border border-border bg-card/40 backdrop-blur-md hover-lift group ${c.span} ${c.height}`}
+                className={`relative overflow-hidden rounded-3xl glass-card ring-fluid hover-lift group ${c.span} ${c.height}`}
               >
                 {/* Inner */}
                 <div className="relative z-10 h-full p-8 md:p-10 flex flex-col justify-between">
@@ -111,7 +111,7 @@ export default function Services({ onOpenInquiry }) {
                       </span>
                     </div>
                     <div className="mt-6 md:mt-8 flex items-start gap-4">
-                      <div className="h-12 w-12 border border-foreground/30 inline-flex items-center justify-center text-foreground group-hover:border-primary group-hover:text-primary transition-colors">
+                      <div className="h-12 w-12 rounded-2xl bg-background/40 border border-border/60 inline-flex items-center justify-center text-foreground group-hover:border-primary group-hover:text-primary transition-colors">
                         <Icon className="h-5 w-5" strokeWidth={1.5} />
                       </div>
                     </div>
@@ -145,7 +145,7 @@ export default function Services({ onOpenInquiry }) {
                         c.key === "air" ? "Air Freight" : c.key.toUpperCase()
                       )
                     }
-                    className="mt-8 inline-flex items-center justify-between w-full md:w-auto md:min-w-[260px] h-12 px-5 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors group/cta"
+                    className="mt-8 inline-flex items-center justify-between w-full md:w-auto md:min-w-[260px] h-12 px-6 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors group/cta shadow-[0_14px_40px_-14px_hsl(var(--primary)/0.6)] ring-fluid"
                   >
                     <span className="font-medium text-sm">{d.cta}</span>
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover/cta:rotate-45" />

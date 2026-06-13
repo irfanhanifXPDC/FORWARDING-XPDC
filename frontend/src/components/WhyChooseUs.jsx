@@ -37,7 +37,7 @@ export default function WhyChooseUs() {
           </motion.div>
         </div>
 
-        <div className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
+        <div className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-5">
           {t.why.items.map((item, i) => (
             <motion.div
               key={i}
@@ -46,7 +46,7 @@ export default function WhyChooseUs() {
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: i * 0.08 }}
-              className="bg-background p-6 md:p-10 group"
+              className="relative glass-card ring-fluid rounded-3xl p-6 md:p-10 group"
               data-testid={`why-stat-${i}`}
             >
               <div className="flex items-center justify-between">

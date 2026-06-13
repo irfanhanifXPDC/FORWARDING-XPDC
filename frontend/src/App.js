@@ -18,7 +18,7 @@ import InquiryModal from "@/components/InquiryModal";
 function Landing() {
   const [inquiryOpen, setInquiryOpen] = useState(false);
   const [service, setService] = useState("Air Freight");
-  const [ready, setReady] = useState(false);
+  const [, setReady] = useState(false);
 
   const openInquiry = useCallback((svc) => {
     setService(svc || "Air Freight");
@@ -52,7 +52,7 @@ function Landing() {
         toastOptions={{
           classNames: {
             toast:
-              "bg-card border border-border text-foreground rounded-none font-sans",
+              "bg-card/90 backdrop-blur-xl border border-border/60 text-foreground rounded-2xl font-sans shadow-[0_20px_50px_-10px_hsl(0_0%_0%/0.4)]",
             title: "font-display text-base",
             description: "text-muted-foreground text-sm",
           },

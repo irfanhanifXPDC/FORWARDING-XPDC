@@ -39,16 +39,16 @@ export default function ContactFooter({ onOpenInquiry }) {
 
             <button
               data-testid="footer-get-quote"
-              onClick={() => onOpenInquiry?.("Air Freight")}
-              className="mt-8 inline-flex items-center gap-3 h-12 px-6 bg-primary text-primary-foreground hover:bg-primary/90 font-medium group"
+              onClick={() => onOpenInquiry?.()}
+              className="mt-8 inline-flex items-center gap-3 h-12 px-7 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium group shadow-[0_14px_40px_-14px_hsl(var(--primary)/0.55)] ring-fluid"
             >
               <span>{t.nav.getQuote}</span>
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
             </button>
           </div>
 
-          <div className="md:col-span-5 grid grid-cols-1 gap-6">
-            <div className="border border-border p-6">
+          <div className="md:col-span-5 grid grid-cols-1 gap-5">
+            <div className="rounded-3xl glass-card ring-fluid p-6">
               <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                 <MapPin className="h-3.5 w-3.5 text-primary" />
                 {t.contact.addressLabel}
@@ -58,7 +58,7 @@ export default function ContactFooter({ onOpenInquiry }) {
                 Neglasari, Kota Tangerang, Banten 15129
               </p>
             </div>
-            <div className="border border-border p-6">
+            <div className="rounded-3xl glass-card ring-fluid p-6">
               <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                 <Mail className="h-3.5 w-3.5 text-primary" />
                 {t.contact.emailLabel}

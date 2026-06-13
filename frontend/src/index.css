@@ -25,7 +25,7 @@
         --border: 220 13% 84%;            /* #D1D5DB */
         --input: 220 13% 84%;
         --ring: 18 100% 50%;
-        --radius: 0;
+        --radius: 1.25rem;
         --grain-opacity: 0.04;
     }
 
@@ -108,10 +108,70 @@
     .text-pretty { text-wrap: pretty; }
 
     .glass {
-        background: hsl(var(--card) / 0.55);
-        backdrop-filter: blur(18px) saturate(140%);
-        -webkit-backdrop-filter: blur(18px) saturate(140%);
-        border: 1px solid hsl(var(--border) / 0.7);
+        background: linear-gradient(
+            135deg,
+            hsl(var(--card) / 0.55) 0%,
+            hsl(var(--card) / 0.35) 100%
+        );
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border: 1px solid hsl(var(--border) / 0.55);
+        box-shadow:
+            inset 0 1px 0 0 hsl(0 0% 100% / 0.18),
+            0 10px 40px -10px hsl(0 0% 0% / 0.35);
+    }
+
+    .glass-strong {
+        background: linear-gradient(
+            135deg,
+            hsl(var(--card) / 0.72) 0%,
+            hsl(var(--card) / 0.52) 100%
+        );
+        backdrop-filter: blur(28px) saturate(200%);
+        -webkit-backdrop-filter: blur(28px) saturate(200%);
+        border: 1px solid hsl(var(--border) / 0.65);
+        box-shadow:
+            inset 0 1px 0 0 hsl(0 0% 100% / 0.22),
+            0 30px 80px -20px hsl(0 0% 0% / 0.45);
+    }
+
+    .glass-card {
+        background: linear-gradient(
+            135deg,
+            hsl(var(--card) / 0.45) 0%,
+            hsl(var(--card) / 0.22) 100%
+        );
+        backdrop-filter: blur(22px) saturate(160%);
+        -webkit-backdrop-filter: blur(22px) saturate(160%);
+        border: 1px solid hsl(var(--border) / 0.45);
+        box-shadow:
+            inset 0 1px 0 0 hsl(0 0% 100% / 0.14),
+            0 20px 50px -20px hsl(0 0% 0% / 0.4);
+    }
+
+    /* Apple-style fluid edge highlight */
+    .ring-fluid {
+        position: relative;
+    }
+    .ring-fluid::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(
+            135deg,
+            hsl(0 0% 100% / 0.5),
+            hsl(0 0% 100% / 0.05) 30%,
+            hsl(0 0% 100% / 0) 60%,
+            hsl(0 0% 100% / 0.18)
+        );
+        -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
     }
 
     .grain::before {

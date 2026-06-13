@@ -53,7 +53,7 @@ export default function Tracking() {
 
           <form
             onSubmit={handle}
-            className="mt-10 md:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-0 bg-card border border-border focus-within:border-primary transition-colors"
+            className="mt-10 md:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-2 p-2 rounded-full glass ring-fluid focus-within:ring-2 focus-within:ring-primary/40 transition-all"
           >
             <div className="flex-1 flex items-center px-5 gap-3">
               <Search className="h-4 w-4 text-muted-foreground" />
@@ -63,14 +63,14 @@ export default function Tracking() {
                 value={val}
                 onChange={(e) => setVal(e.target.value)}
                 placeholder={t.tracking.placeholder}
-                className="w-full h-14 bg-transparent text-base placeholder:text-muted-foreground/70 outline-none"
+                className="w-full h-12 bg-transparent text-base placeholder:text-muted-foreground/70 outline-none"
               />
             </div>
             <button
               data-testid="tracking-submit"
               type="submit"
               disabled={loading}
-              className="h-14 px-7 bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center justify-center gap-2 font-medium disabled:opacity-70"
+              className="h-12 px-7 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center justify-center gap-2 font-medium disabled:opacity-70 shadow-[0_14px_40px_-14px_hsl(var(--primary)/0.55)]"
             >
               {loading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -91,9 +91,9 @@ export default function Tracking() {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`mt-8 p-5 border ${
-                error ? "border-destructive/60" : "border-primary/60"
-              } bg-card text-left flex items-start gap-3`}
+              className={`mt-8 p-5 rounded-3xl glass ring-fluid border ${
+                error ? "border-destructive/40" : "border-primary/40"
+              } text-left flex items-start gap-3`}
               data-testid="tracking-result"
             >
               <PackageSearch

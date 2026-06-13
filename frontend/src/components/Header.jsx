@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "@/context/AppContext";
 import { Sun, Moon, Menu, X, ArrowUpRight } from "lucide-react";
 
+const LOGO_LIGHT = "https://customer-assets.emergentagent.com/job_cargo-logistics-25/artifacts/pqp95swc_logo-color.png";
+const LOGO_DARK = "https://customer-assets.emergentagent.com/job_cargo-logistics-25/artifacts/kj1z9fii_logo-white.png";
+
 export default function Header({ onOpenInquiry }) {
   const { theme, toggleTheme, lang, toggleLang, t } = useApp();
   const [scrolled, setScrolled] = useState(false);
@@ -35,24 +38,21 @@ export default function Header({ onOpenInquiry }) {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.2, 0.7, 0.2, 1], delay: 0.2 }}
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-background/70 backdrop-blur-xl border-b border-border"
-            : "bg-transparent"
+        className={`fixed top-3 md:top-5 inset-x-3 md:inset-x-6 z-50 transition-all duration-500 rounded-full ${
+          scrolled ? "glass-strong ring-fluid" : "glass ring-fluid"
         }`}
       >
-        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 h-16 md:h-20 flex items-center justify-between">
+        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 h-14 md:h-16 flex items-center justify-between">
           <button
             data-testid="logo"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-3 group"
           >
-            <span className="font-display text-xl md:text-2xl tracking-tight">
-              <span className="text-primary">X</span>PDC
-            </span>
-            <span className="hidden md:inline-flex font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground border-l border-border pl-3">
-              Group
-            </span>
+            <img
+              src={theme === "dark" ? LOGO_DARK : LOGO_LIGHT}
+              alt="XPDC Group"
+              className="h-9 md:h-10 w-auto object-contain"
+            />
           </button>
 
           <nav className="hidden lg:flex items-center gap-1">
@@ -123,7 +123,7 @@ export default function Header({ onOpenInquiry }) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="fixed top-16 inset-x-0 z-40 lg:hidden bg-background/95 backdrop-blur-xl border-b border-border"
+            className="fixed top-20 inset-x-3 z-40 lg:hidden glass-strong ring-fluid rounded-3xl"
           >
             <div className="px-6 py-6 flex flex-col gap-1">
               {navItems.map((item) => (
@@ -131,7 +131,7 @@ export default function Header({ onOpenInquiry }) {
                   key={item.id}
                   data-testid={`mobile-nav-${item.id}`}
                   onClick={() => go(item.id)}
-                  className="text-left py-3 border-b border-border/60 font-display text-2xl"
+                  className="text-left py-3 border-b border-border/40 font-display text-2xl"
                 >
                   {item.label}
                 </button>
@@ -139,11 +139,22 @@ export default function Header({ onOpenInquiry }) {
               <button
                 data-testid="mobile-get-quote"
                 onClick={() => {
-                  onOpenInquiry?.("Air Freight");
+                  onOpenInquiry?.();
                   setMobileOpen(false);
                 }}
-                className="mt-4 h-12 bg-primary text-primary-foreground font-medium inline-flex items-center justify-center gap-2"
+                className="mt-4 h-12 rounded-full bg-primary text-primary-foreground font-medium inline-flex items-center justify-center gap-2"
               >
+                {t.nav.getQuote}
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
+           >
                 {t.nav.getQuote}
                 <ArrowUpRight className="h-4 w-4" />
               </button>

@@ -120,6 +120,7 @@ export const translations = {
       titleLcl: "Get a quote — LCL",
       subtitle: "Tell us about your shipment. Our team replies within working hours.",
       fields: {
+        service: "Service",
         name: "Full name",
         company: "Company (optional)",
         email: "Work email",
@@ -271,6 +272,7 @@ export const translations = {
       titleLcl: "Minta penawaran — LCL",
       subtitle: "Ceritakan tentang pengiriman Anda. Tim kami akan merespons di jam kerja.",
       fields: {
+        service: "Layanan",
         name: "Nama lengkap",
         company: "Perusahaan (opsional)",
         email: "Email kerja",

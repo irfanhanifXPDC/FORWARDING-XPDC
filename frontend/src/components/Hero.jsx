@@ -65,7 +65,7 @@ export default function Hero({ onOpenInquiry }) {
             <button
               data-testid="hero-cta-services"
               onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
-              className="group inline-flex items-center justify-between gap-4 h-14 px-6 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors min-w-[220px]"
+              className="group inline-flex items-center justify-between gap-4 h-14 px-7 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors min-w-[220px] shadow-[0_18px_40px_-12px_hsl(var(--primary)/0.55)] ring-fluid"
             >
               <span className="font-medium">{t.hero.cta1}</span>
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
@@ -73,7 +73,7 @@ export default function Hero({ onOpenInquiry }) {
             <button
               data-testid="hero-cta-tracking"
               onClick={() => document.getElementById("tracking")?.scrollIntoView({ behavior: "smooth" })}
-              className="group inline-flex items-center justify-between gap-4 h-14 px-6 border border-foreground/40 hover:border-foreground text-foreground transition-colors min-w-[220px]"
+              className="group inline-flex items-center justify-between gap-4 h-14 px-7 rounded-full glass ring-fluid text-foreground hover:text-primary transition-colors min-w-[220px]"
             >
               <span className="font-medium">{t.hero.cta2}</span>
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />

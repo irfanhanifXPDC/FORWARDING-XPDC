@@ -54,7 +54,7 @@ export default function About() {
         </div>
 
         {/* Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px mt-16 md:mt-24 bg-border">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-16 md:mt-24">
           {[
             { n: "01", t: t.about.pillar1Title, d: t.about.pillar1Body },
             { n: "02", t: t.about.pillar2Title, d: t.about.pillar2Body },
@@ -67,7 +67,7 @@ export default function About() {
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: i * 0.1 }}
-              className="bg-background p-8 md:p-10 group hover:bg-card transition-colors"
+              className="relative glass-card ring-fluid rounded-3xl p-8 md:p-10 group hover:bg-card/60 transition-colors"
             >
               <div className="flex items-center justify-between">
                 <span className="font-mono text-xs text-muted-foreground tracking-[0.25em]">

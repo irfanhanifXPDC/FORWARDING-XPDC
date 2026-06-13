@@ -1,56 +1,73 @@
-import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-import { HOME } from "@/constants/testIds";
+import React, { useState, useCallback } from "react";
+import { AppProvider } from "@/context/AppContext";
+import { Toaster } from "@/components/ui/sonner";
+import Preloader from "@/components/Preloader";
+import Scene3D from "@/components/Scene3D";
+import SmoothScroll from "@/components/SmoothScroll";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Services from "@/components/Services";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import ProcessSteps from "@/components/ProcessSteps";
+import Testimonials from "@/components/Testimonials";
+import Tracking from "@/components/Tracking";
+import ContactFooter from "@/components/ContactFooter";
+import InquiryModal from "@/components/InquiryModal";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+function Landing() {
+  const [inquiryOpen, setInquiryOpen] = useState(false);
+  const [service, setService] = useState("Air Freight");
+  const [ready, setReady] = useState(false);
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
+  const openInquiry = useCallback((svc) => {
+    setService(svc || "Air Freight");
+    setInquiryOpen(true);
   }, []);
 
   return (
-    <div>
-      <header className="App-header">
-        <a
-          data-testid={HOME.emergentLink}
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
-
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <>
+      <Preloader onDone={() => setReady(true)} />
+      <SmoothScroll>
+        <Scene3D />
+        <Header onOpenInquiry={openInquiry} />
+        <main className="relative z-10">
+          <Hero onOpenInquiry={openInquiry} />
+          <About />
+          <Services onOpenInquiry={openInquiry} />
+          <WhyChooseUs />
+          <ProcessSteps />
+          <Testimonials />
+          <Tracking />
+          <ContactFooter onOpenInquiry={openInquiry} />
+        </main>
+      </SmoothScroll>
+      <InquiryModal
+        open={inquiryOpen}
+        onOpenChange={setInquiryOpen}
+        service={service}
+      />
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          classNames: {
+            toast:
+              "bg-card border border-border text-foreground rounded-none font-sans",
+            title: "font-display text-base",
+            description: "text-muted-foreground text-sm",
+          },
+        }}
+      />
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <div className="App min-h-screen bg-background">
+      <AppProvider>
+        <Landing />
+      </AppProvider>
+    </div>
+  );
+}
